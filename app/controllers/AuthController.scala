@@ -9,7 +9,6 @@ import scala.concurrent.duration._
 import play.api.libs.concurrent.Execution.Implicits._
 import com.wordnik.swagger.annotations._
 import ApiDocumentation._
-import utils.AsyncHelper
 
 @Api(value = "/auth", description = "Authentication operations")
 object AuthController extends SecuredController {
