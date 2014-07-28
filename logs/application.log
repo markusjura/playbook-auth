@@ -1,0 +1,30 @@
+2014-07-28 09:39:20,391 - [INFO] - from play in pool-6-thread-8 
+Listening for HTTP on /0:0:0:0:0:0:0:0:9001
+
+2014-07-28 09:40:29,974 - [INFO] - from play in play-internal-execution-context-1 
+Application started (Dev)
+
+2014-07-28 09:40:30,419 - [DEBUG] - from application in play-akka.actor.default-dispatcher-2 
+Try to authenticate user user-1
+
+2014-07-28 09:40:30,545 - [DEBUG] - from application in play-akka.actor.default-dispatcher-2 
+Authentication successful. New token: 235874ef376c9f6a49f111508c70ec7355d14982-1406540430421-user-1
+
+2014-07-28 09:40:38,516 - [DEBUG] - from application in play-akka.actor.default-dispatcher-4 
+Try to authenticate user user-1
+
+2014-07-28 09:40:38,519 - [DEBUG] - from application in play-akka.actor.default-dispatcher-4 
+Authentication successful. New token: cbbfbd1f6186ddd8a5da7f246a3fc94eb39bc6c6-1406540438516-user-1
+
+2014-07-28 09:41:05,630 - [DEBUG] - from application in play-akka.actor.default-dispatcher-9 
+Try to authenticate user user-1
+
+2014-07-28 09:41:05,630 - [DEBUG] - from application in play-akka.actor.default-dispatcher-9 
+Authentication successful. New token: 9b6069ec2c41b5e0e52e5e60786413884c71ace3-1406540465630-user-1
+
+2014-07-28 09:41:28,492 - [DEBUG] - from application in play-akka.actor.default-dispatcher-3 
+Verify token 9b6069ec2c41b5e0e52e5e60786413884c71ace3-1406540465630-user-1
+
+2014-07-28 09:41:28,493 - [DEBUG] - from application in play-akka.actor.default-dispatcher-3 
+Token is valid for user user-1
+
