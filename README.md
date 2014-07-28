@@ -1,22 +1,13 @@
 # Authentication Service
 Handles the authentication. The following users are valid:
-- user-1
-- user-2
-- user-3
-- user-4
-- user-5
-- user-6
-- user-7
-- user-8
-- user-9
-- user-10
+- user-0 to user-99
 
 Password for all users is `pass`.
 
-More details can be found in the [REST API documentation](http://eplay-auth.herokuapp.com)
+More details can be found in the [REST API documentation](http://playbook-auth.herokuapp.com)
 
 #### How to start
-The service is hosted on [http://eplay-auth.herokuapp.com](http://eplay-auth.herokuapp.com). You can use your local
+The service is hosted on [http://playbook-auth.herokuapp.com](http://playbook-auth.herokuapp.com). You can use your local
 `authService` by:
 
 1. Changing the `service.auth.url` in the *eplay application.conf* to your URL
