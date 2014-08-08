@@ -9,7 +9,7 @@ object ApiDocumentation {
 
   final val authBodyDefaultValue =
     """{
-  "username": "user-1",
+  "uid": "user-1",
   "password": "pass"
 }"""
 }

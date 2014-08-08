@@ -12,7 +12,7 @@ class AuthControllerSpec extends WordSpec with Matchers {
   "AuthController" should {
 
     "authenticate user successfully" in new WithApplication {
-      val body: JsValue = Json.obj("username" -> "user-1", "password" -> "pass")
+      val body: JsValue = Json.obj("uid" -> "user-1", "password" -> "pass")
 
       inside(route(FakeRequest(POST, "/auth").withJsonBody(body))) {
         case Some(authRoute) =>
@@ -24,35 +24,35 @@ class AuthControllerSpec extends WordSpec with Matchers {
           inside(jsonContent.value.get("token")) {
             case Some(JsString(token)) =>
               inside(Crypto.extractSignedToken(token)) {
-                case Some(tokenUsername) => tokenUsername shouldBe "user-1"
+                case Some(tokenUid) => tokenUid shouldBe "user-1"
               }
           }
       }
     }
 
     "not authenticate with invalid body" in new WithApplication {
-      val body: JsValue = Json.obj("username" -> "user-10")
+      val body: JsValue = Json.obj("uid" -> "user-10")
 
       inside(route(FakeRequest(POST, "/auth").withJsonBody(body))) {
         case Some(authRoute) =>
           status(authRoute) shouldBe BAD_REQUEST
           contentType(authRoute) shouldBe Some("application/json")
-          contentAsJson(authRoute) shouldBe Json.obj("error" -> "Username or password not supplied.")
+          contentAsJson(authRoute) shouldBe Json.obj("error" -> "User id or password not supplied.")
       }
     }
 
-    "not authenticate with invalid username" in new WithApplication {
-      val body: JsValue = Json.obj("username" -> "test1", "password" -> "pass")
+    "not authenticate with invalid user id" in new WithApplication {
+      val body: JsValue = Json.obj("uid" -> "test1", "password" -> "pass")
       inside(route(FakeRequest(POST, "/auth").withJsonBody(body))) {
         case Some(authRoute) =>
           status(authRoute) shouldBe UNAUTHORIZED
           contentType(authRoute) shouldBe Some("application/json")
-          contentAsJson(authRoute) shouldBe Json.obj("error" -> "Username doesn't exist.")
+          contentAsJson(authRoute) shouldBe Json.obj("error" -> "User id doesn't exist.")
       }
     }
 
     "not authenticate with invalid password" in new WithApplication {
-      val body: JsValue = Json.obj("username" -> "user-2", "password" -> "pass2")
+      val body: JsValue = Json.obj("uid" -> "user-2", "password" -> "pass2")
       inside(route(FakeRequest(POST, "/auth").withJsonBody(body))) {
         case Some(authRoute) =>
           status(authRoute) shouldBe UNAUTHORIZED
@@ -68,7 +68,7 @@ class AuthControllerSpec extends WordSpec with Matchers {
         case Some(result) =>
           status(result) shouldBe OK
           contentType(result) shouldBe Some("application/json")
-          contentAsJson(result) shouldBe Json.obj("username" -> "user-3")
+          contentAsJson(result) shouldBe Json.obj("uid" -> "user-3")
       }
     }
 
